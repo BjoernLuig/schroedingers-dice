@@ -79,7 +79,8 @@ byte radioactiveUpperRight[] = {
   B11110,
   B11111,
   B11111
-};byte radioactiveLowerCenter[] = {
+};
+byte radioactiveLowerCenter[] = {
   B01110,
   B00000,
   B00100,
@@ -90,17 +91,13 @@ byte radioactiveUpperRight[] = {
   B11111
 };
 
-
-
 bool yellowButtonState = true; // false means pressed
 bool blueButtonState = true;
 bool greenButtonState = true;
 bool redButtonState = true;
 
-bool counting = false;
-short counterDelay = 10;
-//char counterDelayChars[] = "100";
-//short counterRange = 1000;
+short mode = 0;
+short nModes = 3;
 short digit = 0;
 short randomRange = 6;
 short randomRangeDigits[] = {6, 0, 0};
