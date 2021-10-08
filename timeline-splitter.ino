@@ -10,7 +10,7 @@
 #define VOLTAGE A2
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
-byte arrowUp[] = {   // https://maxpromer.github.io/LCD-Character-Creator/
+byte arrowUp[] = {   // see to generate the bytecode https://maxpromer.github.io/LCD-Character-Creator/
   B00000,
   B00100,
   B01110,
@@ -20,6 +20,77 @@ byte arrowUp[] = {   // https://maxpromer.github.io/LCD-Character-Creator/
   B00100,
   B00000
 };
+byte arrowDown[] = {
+  B00000,
+  B00100,
+  B00100,
+  B00100,
+  B10101,
+  B01110,
+  B00100,
+  B00000
+};
+byte arrowLeft[] = {
+  B00000,
+  B00100,
+  B00010,
+  B11111,
+  B00010,
+  B00100,
+  B00000,
+  B00000
+};
+byte arrowRight[] = {
+  B00000,
+  B00100,
+  B01000,
+  B11111,
+  B01000,
+  B00100,
+  B00000,
+  B00000
+};
+byte radioactiveUpperLeft[] = {
+  B00000,
+  B00000,
+  B00010,
+  B00110,
+  B01111,
+  B01111,
+  B11111,
+  B11111
+};
+byte radioactiveUpperCenter[] = {
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B01110
+};
+byte radioactiveUpperRight[] = {
+  B00000,
+  B00000,
+  B01000,
+  B01100,
+  B11110,
+  B11110,
+  B11111,
+  B11111
+};byte radioactiveLowerCenter[] = {
+  B01110,
+  B00000,
+  B00100,
+  B01110,
+  B01110,
+  B11111,
+  B11111,
+  B11111
+};
+
+
 
 bool yellowButtonState = true; // false means pressed
 bool blueButtonState = true;
@@ -27,14 +98,14 @@ bool greenButtonState = true;
 bool redButtonState = true;
 
 bool counting = false;
-short counterDelay = 20;
+short counterDelay = 10;
 //char counterDelayChars[] = "100";
 //short counterRange = 1000;
 short digit = 0;
 short randomRange = 6;
 short randomRangeDigits[] = {6, 0, 0};
 short randomNumber = 0;
-char randomNumberChars[3] = "  1";
+char randomNumberChars[4] = "  1";
 
 void interrupt() {
   Serial.println("interrupt");
@@ -73,6 +144,9 @@ void loop() {
   // yellow button
   if(yellowButtonState && ! digitalRead(YELLOW_BUTTON)){
     Serial.println("yellow button");
+    digitalWrite(SIGNAL_LAMP, LOW);
+    counting = true;
+    redButtonState = false;
     yellowButtonState = false;
     // TODO
   }
@@ -108,7 +182,6 @@ void loop() {
       lcd.setCursor(7, 1);
       lcd.print("   ");
     }
-    Serial.println(digit);
     greenButtonState = false;
   }
   else {
