@@ -161,7 +161,11 @@ void loop() {
     if(mode == 0) {
       sprintf(randomNumberChars, "%03d", randomNumber);
       lcd.setCursor(4,0);
-      lcd.print("R(006)=  ");
+      lcd.print("R(");
+      lcd.print((char) (randomRangeDigits[2] + 48));
+      lcd.print((char) (randomRangeDigits[1] + 48));
+      lcd.print((char) (randomRangeDigits[0] + 48));
+      lcd.print(")=  ");
       lcd.print(randomNumberChars);
       lcd.setCursor(4,1);
       lcd.print("            ");
