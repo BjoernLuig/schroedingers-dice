@@ -2,5 +2,6 @@
     "configuration": "cpu=atmega328",
     "board": "arduino:avr:nano",
     "port": "COM3",
-    "sketch": "timeline-splitter.ino"
+    "sketch": "timeline-splitter.ino",
+    "programmer": "arduino:avrispmkii"
 }
