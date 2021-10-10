@@ -13,9 +13,10 @@
 
 
 // settings
-#define COUNTING_INTERVAL 10000 // 10 Seconds
+#define COUNTING_INTERVAL 20000 // 10 Seconds
 #define CONVERSION_INDEX 151 // counts per minute /(micro Sv/h)
-#define VOLTAGE_SCALE 0.00938
+#define BACKGROUND 25 // backround counts per minutes
+#define VOLTAGE_SCALE 0.00735 // 0.00938
 #define MICROS_FAKTOR 4 // resolution for arduino nano
 
 
@@ -248,11 +249,7 @@ void loop() {
     interrupted = false;
     waitForRandomNumber = false;
   }else if(mode == 1 && ((millis() - lastUpdate) > COUNTING_INTERVAL)) { // update mode 1: geiger counter
-    Serial.println(lastUpdate);
-    Serial.println(millis());
-    Serial.println(count);
-    countsPerMinute = count/60000.0*COUNTING_INTERVAL;
-    Serial.printlncountsPerMinute);
+    countsPerMinute = count * (60000.0 / COUNTING_INTERVAL) - BACKGROUND;
     sievert = countsPerMinute/CONVERSION_INDEX;
     dtostrf(countsPerMinute, 6, 2, countsPerMinuteChars);
     dtostrf(sievert, 5, 2, sievertChars);
@@ -260,6 +257,7 @@ void loop() {
     lcd.print(countsPerMinuteChars);
     lcd.setCursor(6, 1);
     lcd.print(sievertChars);
+    lcd.print("\xE4Sv/h");
     lastUpdate = millis();
     count = 0;
   } else if(mode == 2) { // update mode 2: battery voltage
