@@ -16,7 +16,7 @@
 #define COUNTING_INTERVAL 20000 // 10 Seconds
 #define CONVERSION_INDEX 151 // counts per minute /(micro Sv/h)
 #define BACKGROUND 25 // backround counts per minutes
-#define VOLTAGE_SCALE 0.00735 // 0.00938
+#define VOLTAGE_SCALE 0.00955 // 0.00735
 #define MICROS_FAKTOR 4 // resolution for arduino nano
 
 
