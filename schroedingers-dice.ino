@@ -250,7 +250,7 @@ void loop() {
   //blue button
   if(blueButtonState && ! digitalRead(BLUE_BUTTON)) {
     Serial.print("blue button");
-    if(digit) {
+    if(digit && (mode == 0)) {
       randomRangeDigits[digit - 1] = (randomRangeDigits[digit-1] + 1) % 10;
       randomRange = randomRangeDigits[0] + 10 * randomRangeDigits[1] + 100 * randomRangeDigits[2];
       lcd.setCursor(9 - digit, 0);
@@ -266,15 +266,15 @@ void loop() {
     Serial.print("green button");
     if(mode == 0) {
       digit = (digit + 1) % 4;
-    }
-    if(digit) {
-      lcd.setCursor(9 - digit, 1);
-      lcd.print("^");
-      lcd.print(" ");
-    }
-    else {
-      lcd.setCursor(6, 1);
-      lcd.print("   ");
+      if(digit) {
+        lcd.setCursor(9 - digit, 1);
+        lcd.print("^");
+        lcd.print(" ");
+      }
+      else {
+        lcd.setCursor(6, 1);
+        lcd.print("   ");
+      }
     }
     Serial.println(digit);
   }
