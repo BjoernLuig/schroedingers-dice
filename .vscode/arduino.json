@@ -1,7 +1,0 @@
-{
-    "configuration": "cpu=atmega328",
-    "board": "arduino:avr:nano",
-    "port": "COM3",
-    "sketch": "schroedingers-dice.ino",
-    "programmer": "arduino:avrispmkii"
-}
