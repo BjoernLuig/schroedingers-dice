@@ -38,7 +38,7 @@ The battery voltage U can be displayed by pressing the yellow button twice.
 
 ### Physics
 
-Radioactive decays are in contrast to a throw of a dice or the random generated numbers of a computer truly random. This might not be of any practical use but is philosophically very interesting. (Further information: https://www.youtube.com/watch?v=SxP30euw3-0, https://www.youtube.com/watch?v=ZuvK-od647c)
+Radioactive decays are in contrast to the throw of a dice or computer generated  random numbers truly random. This might not be of any practical use but is philosophically very interesting. (Further information: https://www.youtube.com/watch?v=SxP30euw3-0, https://www.youtube.com/watch?v=ZuvK-od647c)
 
 To detect the radiation of decays (or other radiations) we use a <a href="https://en.wikipedia.org/wiki/Geiger counter">Geiger counter</a> and as a source of radiation an <a href="https://en.wikipedia.org/wiki/Smoke_detector#Ionization">ionization smoke detector</a> containing americanium-241 (see picture below). (Booth can easily be obtained via the internet.)
 
@@ -48,7 +48,7 @@ To detect the radiation of decays (or other radiations) we use a <a href="https:
 
 ### Circuit
 
-The components of this project are shown in the fritzing diagram below. An Arduino nano reads the signals of an Geiger counter, runs the code and displays everything on an LCD-display. It also reads the battery voltage using a voltage divider and an analog pin. The detection of a decay can be displayed with a lamp/LED. (In the Photos above, I even added a second lamp to indicate that the device is on.)
+The components of this project are shown in the fritzing diagram below. An Arduino nano reads the signals of an Geiger counter, runs the code and displays everything on an LCD-display. It also reads the battery voltage using a voltage divider and an analog pin. The detection of a decay can be displayed with a lamp/LED. (In the Photos above, I even added a second lamp directly to the On/Off switch to indicate that the device is on.)
 
 <img src="https://github.com/BjoernLuig/schroedingers-dice/blob/main/imgs/circuit.png" width="700"/>
 
